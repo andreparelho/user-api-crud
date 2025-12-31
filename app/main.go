@@ -6,6 +6,7 @@ import (
 	"github.com/andreparelho/user-api-crud/app/config"
 	"github.com/andreparelho/user-api-crud/app/internal/logger"
 	"github.com/andreparelho/user-api-crud/app/internal/server"
+	"github.com/andreparelho/user-api-crud/app/internal/user"
 )
 
 func main() {
@@ -13,7 +14,9 @@ func main() {
 	logg := logger.New(cfg.Env)
 	ctx := server.Shutdown()
 
-	app := server.CreateRouter()
+	userService := user.NewUserService()
+
+	app := server.CreateRouter(userService)
 	server := server.NewServer(app, logg)
 
 	if err := server.Start(ctx, cfg.Port); err != nil {
