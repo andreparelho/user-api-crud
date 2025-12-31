@@ -1,7 +1,16 @@
 package user
 
-func CreateUser() {
+type UserService interface {
+	CreateUser()
+	GetUser()
 }
 
-func GetUser() {
+func NewUserService() *user {
+	return &user{}
+}
+
+func (u user) CreateUser() {
+}
+
+func (u user) GetUser() {
 }
