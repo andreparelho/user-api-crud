@@ -3,7 +3,7 @@ package server
 import (
 	"time"
 
-	"github.com/andreparelho/user-api-crud/app/internal/user"
+	"github.com/andreparelho/user-api-crud/internal/user"
 	"github.com/gofiber/fiber/v3"
 	"github.com/gofiber/fiber/v3/middleware/recover"
 	"github.com/gofiber/fiber/v3/middleware/requestid"

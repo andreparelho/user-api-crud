@@ -7,10 +7,12 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/gofiber/fiber/v3"
+	"github.com/andreparelho/user-api-crud/internal/user"
 )
 
-func NewServer(app *fiber.App, logger *slog.Logger) *Server {
+func NewServer(userService user.UserService, logger *slog.Logger) *Server {
+	app := CreateRouter(userService)
+
 	return &Server{
 		App:    app,
 		Logger: logger,
