@@ -1,16 +1,13 @@
-version: "3.8"
+version: "3.9"
 
 services:
   localstack:
-    container_name: localstack
     image: localstack/localstack:latest
+    container_name: localstack
     ports:
-      - "127.0.0.1:4566:4566"
+      - "4566:4566"
     environment:
-      - SERVICES=dynamodb
-      - AWS_ACCESS_KEY_ID=test
-      - AWS_SECRET_ACCESS_KEY=test
-      - AWS_DEFAULT_REGION=us-east-1
+      SERVICES: dynamodb
+      AWS_DEFAULT_REGION: us-east-1
     volumes:
-      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
-      - "/var/run/docker.sock:/var/run/docker.sock"
+      - /var/run/docker.sock:/var/run/docker.sock
